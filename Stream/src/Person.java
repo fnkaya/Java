@@ -1,13 +1,17 @@
-public class Person{
+import java.util.List;
+
+public class Person implements Comparable<Person> {
 
     private String name;
     private int age;
     private Gender gender;
+    private List<String> programmingLanguages;
 
-    public Person(String name, int age, Gender gender) {
+    public Person(String name, int age, Gender gender, List<String> programmingLanguages) {
         this.name = name;
         this.age = age;
         this.gender = gender;
+        this.programmingLanguages = programmingLanguages;
     }
 
     public String getName() {
@@ -34,6 +38,14 @@ public class Person{
         this.gender = gender;
     }
 
+    public List<String> getProgrammingLanguages() {
+        return programmingLanguages;
+    }
+
+    public void setProgrammingLanguages(List<String> programmingLanguages) {
+        this.programmingLanguages = programmingLanguages;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -43,4 +55,8 @@ public class Person{
                 '}';
     }
 
+    @Override
+    public int compareTo(Person person) {
+        return Integer.compare(this.getAge(), person.getAge());
+    }
 }
